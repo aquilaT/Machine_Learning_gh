@@ -188,11 +188,13 @@ Accuracy for the Random forests methid for dataset testing1 is 0.879
 
 The expected OUT OF SAMPLE ERROR (for testing1 dataset) for the random forests method is 100-99.87 = 0.13% 
 
-# Predicting CLASSE variable for the data in the Test dataset :
+# Expectation for out of sample error / Predicting of CLASSE variable for the data in the Test dataset:
 
-Random Forests gave a better accuracy on the testing1 dataset of 99.87% (compared to 86.6% for Decision Trees),  hence OUT OF SAMPLE ERROR is smaller for Random Forests method (0.03% vs 12.1%) 
+Random Forests gave a better accuracy on the testing1 dataset of 99.87% (compared to 86.6% for Decision Trees),  hence OUT OF SAMPLE ERROR is smaller for Random Forests method (0.13% vs 12.1%) 
 
 so we'll select Random Forests method to predict CLASSE variable for the Test sample.
+
+Since we letft (testing) dataset apart when training the model, we expect (testing) dataset to have unbiased estimate of RF prediction. Based on small sample size of 20 measurements in (testing) dataset we expect out of sample error to be the same as for (testing1) sample, i e 0.13%. We expect NO ERRORS when predicting on small sample of 20 measurements (20 x 0.0013 = 0.026 < 1 => so we expect all variables predicted accurately with Fandom forests)
 
 ```{r, cache=TRUE}
 predictionsB2 <- predict(modFitB1, testing, type = "class")
