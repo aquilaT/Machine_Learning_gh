@@ -1,1 +1,1 @@
-# Machine_Learning_gh
+The course project for the Coursera Machine Learning Class
