@@ -1,5 +1,6 @@
 ---
-title: "Machine Learning Course Project: Predicting the manner of doing excercise based on parametric accelerometers data"
+title: 'Machine Learning Course Project: Predicting the manner of doing excercise
+  based on parametric accelerometers data'
 author: "Andrey"
 date: "23 апреля 2016 г."
 output: html_document
@@ -60,9 +61,15 @@ q <- as.data.frame (table(training$classe))
 q
 ```
 
-# Splitting Training dataset into 2 subsets
+# CROSS-VALIDATION strategy and model selection strategy
 
-We want to split available Training dataset into 2 subsets: training1 (65%) and testing1 (35%)
+Cross-validation STRATEGY: We'll split available Training dataset into 2 subsets: training1 (65%) and testing1 (35%). 
+
+We'll use 2 methods (Desision Trees and Random Forests) to train them on training1 sample and predict on testing 1 sample
+
+We'll compare the models for accuracy/ out of sample error (received by predicting on testing1) and we'll choose the best model based out of sample error 
+
+We'll use te best model to predict on the original (testing) dataset which has 20 observations in it to predict the CLASSE variable
 
 ```{r, cache=TRUE}
 train_partition <- createDataPartition(y=training$classe, p=0.65, list=FALSE)
@@ -162,6 +169,10 @@ confmatrix_tree
 plot(confmatrix_tree$table, col = confmatrix_tree$byClass, main = paste("Decision Tree Confusion Matrix: Accuracy =", round(confmatrix_tree$overall['Accuracy'], 4)))
 ```
 
+Accuracy for the Decision trees methid for dataset testing1 is 0.879
+
+The expected OUT OF SAMPLE ERROR (for testing1 dataset) for the Decision Trees method is 100-87.9 = 12.1% 
+
 # Predictions using Random Forests
 
 ```{r, cache=TRUE}
@@ -172,10 +183,15 @@ confmatrix_randfor
 plot(modFitB1)
 plot(confmatrix_randfor$table, col = confmatrix_tree$byClass, main = paste("Random Forest Confusion Matrix: Accuracy =", round(confmatrix_randfor$overall['Accuracy'], 4)))
 ```
+Accuracy for the Random forests methid for dataset testing1 is 0.879
+
+The expected OUT OF SAMPLE ERROR (for testing1 dataset) for the random forests method is 100-99.87 = 0.13% 
 
 # Predicting CLASSE variable for the data in the Test dataset :
 
-Random Forests gave a better accuracy on the testing1 dataset of 99.94% (compared to 86.6% for Decision Trees), so we'll use Random Forests outcome modfitB1 to predict CLASSE variable for the Test sample
+Random Forests gave a better accuracy on the testing1 dataset of 99.94% (compared to 86.6% for Decision Trees),  hence OUT OF SAMPLE ERROR is smaller for Random Forests method (0.13% vs 12.1%) 
+
+so we'll select Random Forests method to predict CLASSE variable for the Test sample.
 
 ```{r, cache=TRUE}
 predictionsB2 <- predict(modFitB1, testing, type = "class")
