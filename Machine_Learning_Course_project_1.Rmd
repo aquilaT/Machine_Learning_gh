@@ -24,7 +24,7 @@ The goal of your project is to predict the manner in which they did the exercise
 
 # Loading the data
 
-```{r, cache=TRUE}
+```{r, cache=TRUE, warning=FALSE, message=FALSE, error=FALSE}
 library(caret)
 library(rpart)
 library(rpart.plot)
