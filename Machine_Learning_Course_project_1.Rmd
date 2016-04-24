@@ -183,13 +183,14 @@ confmatrix_randfor
 plot(modFitB1)
 plot(confmatrix_randfor$table, col = confmatrix_tree$byClass, main = paste("Random Forest Confusion Matrix: Accuracy =", round(confmatrix_randfor$overall['Accuracy'], 4)))
 ```
+
 Accuracy for the Random forests methid for dataset testing1 is 0.879
 
 The expected OUT OF SAMPLE ERROR (for testing1 dataset) for the random forests method is 100-99.87 = 0.13% 
 
 # Predicting CLASSE variable for the data in the Test dataset :
 
-Random Forests gave a better accuracy on the testing1 dataset of 99.94% (compared to 86.6% for Decision Trees),  hence OUT OF SAMPLE ERROR is smaller for Random Forests method (0.13% vs 12.1%) 
+Random Forests gave a better accuracy on the testing1 dataset of 99.87% (compared to 86.6% for Decision Trees),  hence OUT OF SAMPLE ERROR is smaller for Random Forests method (0.03% vs 12.1%) 
 
 so we'll select Random Forests method to predict CLASSE variable for the Test sample.
 
