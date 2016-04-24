@@ -65,9 +65,9 @@ q
 
 Cross-validation STRATEGY: We'll split available Training dataset into 2 subsets: training1 (65%) and testing1 (35%). 
 
-We'll use 2 methods (Desision Trees and Random Forests) to train them on training1 sample and predict on testing 1 sample
+We'll use 2 methods (Desision Trees and Random Forests) to train them on training1 sample and estimate their quality by predicting on testing1 dataset
 
-We'll compare the models for accuracy/ out of sample error (received by predicting on testing1) and we'll choose the best model based out of sample error 
+We'll compare the models for accuracy/ out of sample error (error received not on training dataset, but on testing1 dataset which we hold) and we'll choose the best model based out of sample error 
 
 We'll use te best model to predict on the original (testing) dataset which has 20 observations in it to predict the CLASSE variable
 

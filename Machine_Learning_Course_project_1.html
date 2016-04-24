@@ -164,8 +164,8 @@ testing &lt;- read.csv(url(testUrl), na.strings=c(&quot;NA&quot;,&quot;#DIV/0!&q
 <div id="cross-validation-strategy-and-model-selection-strategy" class="section level1">
 <h1>CROSS-VALIDATION strategy and model selection strategy</h1>
 <p>Cross-validation STRATEGY: We’ll split available Training dataset into 2 subsets: training1 (65%) and testing1 (35%).</p>
-<p>We’ll use 2 methods (Desision Trees and Random Forests) to train them on training1 sample and predict on testing 1 sample</p>
-<p>We’ll compare the models for accuracy/ out of sample error (received by predicting on testing1) and we’ll choose the best model based out of sample error</p>
+<p>We’ll use 2 methods (Desision Trees and Random Forests) to train them on training1 sample and estimate their quality by predicting on testing1 dataset</p>
+<p>We’ll compare the models for accuracy/ out of sample error (error received not on training dataset, but on testing1 dataset which we hold) and we’ll choose the best model based out of sample error</p>
 <p>We’ll use te best model to predict on the original (testing) dataset which has 20 observations in it to predict the CLASSE variable</p>
 <pre class="r"><code>train_partition &lt;- createDataPartition(y=training$classe, p=0.65, list=FALSE)
 training1 &lt;- training[train_partition, ]
